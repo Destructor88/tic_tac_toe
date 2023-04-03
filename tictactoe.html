@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style type="text/css">
-        #modifier{
+        #modifier {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-evenly;
             height: 100vh;
+            flex-wrap: wrap;
         }
-        body{
+
+        body {
             background-color: beige;
             margin: 0;
         }
-        #main{
+
+        #main {
             width: 33em;
             height: 33em;
             display: grid;
@@ -24,77 +28,101 @@
             grid-template-rows: 1fr 1fr 1fr;
             background-color: white;
         }
-        .tile:nth-last-child(n+4){
+
+        .tile:nth-last-child(n+4) {
             border-bottom: 0.5vh black solid;
-            color: gray;
         }
-        .tile{
-            text-align: center;
+
+        .tile {
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 5rem;
+            display: flex;
+            align-items: center;
         }
-        #startuppopup{
+
+        #startuppopup {
             position: absolute;
-	        top: 0;
-	        width: 100%;
-	        height: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: rgba(0, 0, 0, 0.2);
         }
-        #playerForm{
+
+        #playerForm {
             padding: 0.4em;
             border: black 0.2em solid;
             background-color: blueviolet;
         }
-        .r :nth-last-child(1){
-            border: red 1em solid;
+
+        .r :nth-last-child(1) {
+            border: orangered 0.25em solid;
+        }
+
+        p {
+            margin: 0;
+            color: darkslategrey;
+        }
+
+        #resetButton {
+            width: 25%;
         }
     </style>
 </head>
+
 <body>
     <div id="modifier">
-    <div id="main">
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
+        <h1 id="player1NameDisplay"></h1>
+        <div id="main">
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+        </div>
+        <h1 id="player2NameDisplay"></h1>
+        <div style="flex-basis: 100%;"></div>
+        <button type="reset" id="resetButton">Reset</button>
     </div>
-</div>
-<div id="startuppopup">
-    <form id="playerForm">
-       <div class="r">
-        <h1>Player 1</h1>
-        <label for="player1Name">Name:</label>
-        <input id="player1Name" name="player1Name" type="text">
-        <label for="symbolSelect">Symbol:</label>
-        <select class="symbolSelect" name="symbolSelect1">
-           <option value="x">X</option>
-           <option value="o">O</option>
-           <option value="w">W</option>
-           <option value="h">H</option>
-        </select>
-       </div>
+    <div id="startuppopup">
+        <form id="playerForm">
+            <div class="r">
+                <h1>Player 1</h1>
+                <label for="player1Name">Name:</label>
+                <input id="player1Name" name="player1Name" type="text">
+                <label for="symbolSelect">Symbol:</label>
+                <select class="symbolSelect" name="symbolSelect1">
+                    <option value="X">X</option>
+                    <option value="O">O</option>
+                    <option value="W">W</option>
+                    <option value="H">H</option>
+                </select>
+            </div>
 
-       <div class="r">
-        <h1>Player 2</h1>
-        <label for="player2Name">Name:</label>
-        <input id="player2Name" name="player2Name" type="text">
-        <label for="symbolSelect">Symbol:</label>
-        <select class="symbolSelect" name="symbolSelect1">
-           <option value="x">X</option>
-           <option value="o">O</option>
-           <option value="w">W</option>
-           <option value="h">H</option>
-        </select>
-       </div>
-       <button type="button" id="createPlayer">Submit</button>
-    </form>
-</div>
+            <div class="r">
+                <h1>Player 2</h1>
+                <label for="player2Name">Name:</label>
+                <input id="player2Name" name="player2Name" type="text">
+                <label for="symbolSelect">Symbol:</label>
+                <select class="symbolSelect" name="symbolSelect1">
+                    <option value="X">X</option>
+                    <option value="O">O</option>
+                    <option value="W">W</option>
+                    <option value="H">H</option>
+                </select>
+            </div>
+            <button type="button" id="createPlayer">Submit</button>
+            <button type="button" id="botMode">Play against AI</button>
+        </form>
+    </div>
 </body>
 <script src="tictactoe.js"></script>
+
 </html>
