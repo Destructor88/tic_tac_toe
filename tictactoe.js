@@ -1,4 +1,4 @@
-const gameboard = ["", "", "", "", "", "", "", "", ""];
+var gameboard = ["", "", "", "", "", "", "", "", ""];
 var botMode = 0;
 document.getElementById("createPlayer").onclick = e => {
     e.preventDefault()
@@ -19,7 +19,9 @@ document.getElementById("createPlayer").onclick = e => {
 }
 document.getElementById("resetButton").onclick = e => {
     e.preventDefault();
-
+    reset();
+}
+function reset(){
     let tiles = document.getElementsByClassName("tile");
     for (let tile of tiles) {
         tile.classList.remove(`${player1.symbol}`)
@@ -52,10 +54,21 @@ const displayController = (() => {
                     tiles[tile].innerHTML = `<p>${player1.symbol}</p>`;
                     playerTurn = 2;
                     tiles[tile].classList.add(`${player1.symbol}`);
+                    gameboard[tile] = player1.symbol;
                 } else {
                     tiles[tile].innerHTML = `<p>${player2.symbol}</p>`;
                     playerTurn = 1;
                     tiles[tile].classList.add(`${player2.symbol}`);
+                    gameboard[tile] = player2.symbol;
+                }
+
+                let result = checkForWinner();
+                if(result != null && result != "tie"){
+                    alert(`${result} won!`);
+                    reset();
+                }else if(result == "tie"){
+                    alert("draw");
+                    reset();
                 }
             } else {
                 tiles[tile].innerHTML = `<p>${player1.symbol}</p>`;
